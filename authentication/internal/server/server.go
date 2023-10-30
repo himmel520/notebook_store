@@ -1,10 +1,10 @@
 package server
 
 import (
+	log "authentication/internal/logger"
 	"authentication/internal/models"
 	"authentication/internal/store"
 	"encoding/json"
-	"log"
 	"net/http"
 	"time"
 
@@ -52,6 +52,7 @@ func (s *Server) Start() error {
 	s.ConfigureStore(db)
 	s.ConfigureRouter()
 
+	log.Logger.Info("start server")
 	return http.ListenAndServe(s.config.Port, s.router)
 }
 
@@ -106,7 +107,7 @@ func (s *Server) handleLogIn() http.HandlerFunc {
 
 		sessionId := uuid.New().String()
 		if err := s.redis.SetSessionID(sessionId, registeredUser); err != nil {
-			log.Println("[REDIS]", err)
+			log.Logger.Error(err)
 			w.WriteHeader(http.StatusUnauthorized)
 			return
 		}

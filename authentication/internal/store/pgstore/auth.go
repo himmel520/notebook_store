@@ -4,7 +4,6 @@ import (
 	uerr "authentication/internal/errors"
 	"authentication/internal/models"
 	"database/sql"
-	"log"
 )
 
 type AuthRepo struct {
@@ -23,7 +22,6 @@ func (r *AuthRepo) CreateUser(u *models.User) error {
 			($1, $2)`,
 		u.Email, u.PasswordHash)
 	if err != nil {
-		log.Println("[DB]: ", err)
 		return uerr.ErrNotUQEmail
 	}
 	return nil
@@ -41,7 +39,6 @@ func (r *AuthRepo) FindUserByEmail(loginUser *models.User) (*models.User, error)
 		 from users
 		 	where email=$1`, loginUser.Email).Scan(&registeredUser.ID, &registeredUser.Email, &registeredUser.PasswordHash, &registeredUser.IsAdmin)
 	if err != nil {
-		log.Println("[DB]: ", err)
 		return nil, uerr.ErrInvalidEmailOrPassword
 	}
 	return &registeredUser, nil

@@ -1,10 +1,10 @@
 package server
 
 import (
+	log "authentication/internal/logger"
 	"authentication/internal/models"
 	"context"
 	"fmt"
-	"log"
 	"strconv"
 	"time"
 
@@ -52,7 +52,7 @@ func (r *Redis) GetIsAdmin(sessionIdID string) (string, error) {
 		fmt.Sprintf("sessions:%v", sessionIdID),
 	).Result()
 	if err != nil {
-		log.Println(err)
+		log.Logger.Info(err)
 		return "", err
 	}
 	return role, nil

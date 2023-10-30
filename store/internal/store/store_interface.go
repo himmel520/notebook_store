@@ -4,8 +4,9 @@ import "store/internal/models"
 
 type Notebook interface {
 	CreateNotebook(n *models.Notebook) error
-	DeleteNotebookByID(id int) error
-	FindNotebookByID(id int) (*models.Notebook, error)
+	DeleteNotebookByID(id string) error
+	FindNotebookByID(id string, info *models.NotebookInfo) error
+	GetAllNotebooks() ([]*models.NotebookInfo, error)
 }
 
 type Components interface {
