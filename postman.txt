@@ -1,0 +1,75 @@
+AUTHENTICATION
+
+POST http://localhost:8080/signUp
+{
+    "email": "test@ex.com",
+    "password": "gjvgjkkk"
+}
+
+POST http://localhost:8080/logIn
+{
+    "email": "test@ex.com",
+    "password": "gjvgjkkk"
+}
+
+POST http://localhost:8080/logOut
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+--------------------------------------------------------------------------------------------------------|
+
+STORE
+
+GET http://localhost:8081/catalog
+
+GET http://localhost:8081/catalog/1
+
+
+POST http://localhost:8081/addSystem
+{
+  "name": "System Name"
+}
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+POST http://localhost:8081/addScreen
+{
+  "size_inches": 15.6,
+  "resolution": "1920x1080"
+}
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+POST http://localhost:8081/addProcessor
+{
+  "model": "Processor Model",
+  "speed_GHz": 2.4
+}
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+POST http://localhost:8081/addStorage
+{
+  "type": "SSD",
+  "size_gb": 512
+}
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+POST http://localhost:8081/addRam
+{
+  "size_gb": 8
+}
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+POST http://localhost:8081/addNotebook
+{
+  "system_id": 1,
+  "screen_id": 1,
+  "processor_id": 1,
+  "storage_id": 1,
+  "ram_id": 1,
+  "model": "Example Model",
+  "description": "Sample Description",
+  "price": 999.99
+}
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
+
+
+DELETE http://localhost:8081/deleteNotebook/1
+session_id=9b0fe854-f6b9-42e9-92de-f4716ea429ad; Path=/; HttpOnly; Expires=Wed, 29 Nov 2023 03:06:53 GMT;
