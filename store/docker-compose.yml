@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+  store:
+    container_name: store
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+    - notebook
+
+  nats:
+    image: nats
+    container_name: nats
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    networks:
+    - notebook
+
+  store-pg:
+    image: postgres
+    container_name: store-pg
+    volumes:
+    - "./migrations/000001_notebook.up.sql:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: notebook
+    ports:
+      - "5432:5432"
+
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    # ports:
+    #   - "8080:80"
+    networks:
+      - notebook
+
+  apache:
+    image: httpd
+    container_name: apache
+    # ports:
+    #   - "8081:80"
+    networks:
+      - notebook
+
+networks:
+  notebook:
+    driver: bridge

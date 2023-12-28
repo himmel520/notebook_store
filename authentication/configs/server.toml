@@ -1,7 +1,7 @@
 port = ":8080"
-database_url = "host=localhost dbname=notebook sslmode=disable password=password"  
-nats_url = "nats://127.0.0.1:4222"
+database_url = "host=auth-pg dbname=notebook sslmode=disable user=postgres password=password" 
+nats_url = "nats://nats:4222"
 [redis]
-    addr = "127.0.0.1:6379"
+    addr = "redis:6379"
     password = ""
     db = 0

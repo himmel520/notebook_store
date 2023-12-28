@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+  auth:
+    container_name: auth
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - notebook
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - notebook
+
+  auth-pg:
+    image: postgres
+    container_name: auth-pg
+    volumes:
+    - "./migrations/000001_users.up.sql:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: notebook
+    networks:
+      - notebook
+    ports:
+      - "5433:5432"
+
+networks:
+  notebook:
+    external:
+      name: store_notebook
