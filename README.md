@@ -1,8 +1,9 @@
-# notebook_store
+<h2>notebook_store</h2>
 
-$ cd authentication
-$ go run cmd/main.go
+<pre>cd authentication</pre>
+<pre>go run cmd/main.go</pre><br>
 
-$ cd store
-$ go run cmd/main.go
+
+<pre>cd store</pre>
+<pre>go run cmd/main.go</pre>
 
