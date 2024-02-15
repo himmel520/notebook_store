@@ -3,10 +3,12 @@ package server
 import (
 	"encoding/json"
 	"net/http"
-	log "store/internal/logger"
-	"store/internal/models"
-	"store/internal/store"
 	"time"
+
+	"github.com/himmel520/notebook_store/store/internal/models"
+	"github.com/himmel520/notebook_store/store/internal/store"
+
+	log "github.com/himmel520/notebook_store/store/internal/logger"
 
 	"github.com/gorilla/mux"
 	"github.com/nats-io/nats.go"

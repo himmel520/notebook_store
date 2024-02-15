@@ -1,12 +1,13 @@
 package server
 
 import (
-	log "authentication/internal/logger"
-	"authentication/internal/models"
 	"context"
 	"fmt"
 	"strconv"
 	"time"
+
+	log "github.com/himmel520/notebook_store/authentication/internal/logger"
+	"github.com/himmel520/notebook_store/authentication/internal/models"
 
 	"github.com/redis/go-redis/v9"
 )

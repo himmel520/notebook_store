@@ -1,6 +1,6 @@
 package store
 
-import "authentication/internal/models"
+import "github.com/himmel520/notebook_store/authentication/internal/models"
 
 type Auth interface {
 	CreateUser(u *models.User) error

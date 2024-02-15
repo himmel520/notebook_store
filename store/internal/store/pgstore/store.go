@@ -2,7 +2,8 @@ package pgstore
 
 import (
 	"database/sql"
-	"store/internal/store"
+
+	"github.com/himmel520/notebook_store/store/internal/store"
 
 	_ "github.com/lib/pq"
 )

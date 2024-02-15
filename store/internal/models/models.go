@@ -1,6 +1,6 @@
 package models
 
-import merr "store/internal/errors"
+import merr "github.com/himmel520/notebook_store/store/internal/errors"
 
 type NotebookInfo struct {
 	SystemName          string  `json:"system_name"`

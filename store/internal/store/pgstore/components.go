@@ -2,9 +2,10 @@ package pgstore
 
 import (
 	"database/sql"
-	merr "store/internal/errors"
-	log "store/internal/logger"
-	"store/internal/models"
+
+	merr "github.com/himmel520/notebook_store/store/internal/errors"
+	log "github.com/himmel520/notebook_store/store/internal/logger"
+	"github.com/himmel520/notebook_store/store/internal/models"
 )
 
 type ComponentsRepo struct {

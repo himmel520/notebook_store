@@ -1,22 +1,19 @@
-FROM golang
+FROM golang AS builder
 
-WORKDIR /app
-COPY . .
+WORKDIR /usr/local/src
 
+# Dependencies
+COPY go.mod ./ 
 RUN go mod download
-EXPOSE 8081
 
-CMD ["go", "run", "cmd/main.go"]
+# Build
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./bin/store cmd/main.go
 
-# FROM golang AS builder
-# WORKDIR /build
-# COPY . .
-# RUN go clean --modcache
-# RUN go build -mod=readonly -o store cmd/main.go
+FROM alpine as runner
 
-# FROM alpine
+COPY --from=builder usr/local/src/bin/store /
+COPY --from=builder usr/local/src/configs /configs
 
-# WORKDIR /build
-# COPY --from=builder /build/store /
-# EXPOSE 8081
-# CMD ["/store"]
+
+CMD ["/store"]

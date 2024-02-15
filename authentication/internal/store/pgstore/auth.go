@@ -1,9 +1,10 @@
 package pgstore
 
 import (
-	uerr "authentication/internal/errors"
-	"authentication/internal/models"
 	"database/sql"
+
+	uerr "github.com/himmel520/notebook_store/authentication/internal/errors"
+	"github.com/himmel520/notebook_store/authentication/internal/models"
 )
 
 type AuthRepo struct {

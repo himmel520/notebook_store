@@ -2,7 +2,8 @@ package server
 
 import (
 	"database/sql"
-	"store/internal/store/pgstore"
+
+	"github.com/himmel520/notebook_store/store/internal/store/pgstore"
 )
 
 func (s *Server) NewDB(dbUrl string) (*sql.DB, error) {

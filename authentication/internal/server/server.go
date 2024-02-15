@@ -1,12 +1,13 @@
 package server
 
 import (
-	log "authentication/internal/logger"
-	"authentication/internal/models"
-	"authentication/internal/store"
 	"encoding/json"
 	"net/http"
 	"time"
+
+	log "github.com/himmel520/notebook_store/authentication/internal/logger"
+	"github.com/himmel520/notebook_store/authentication/internal/models"
+	"github.com/himmel520/notebook_store/authentication/internal/store"
 
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"

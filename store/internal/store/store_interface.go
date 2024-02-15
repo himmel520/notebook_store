@@ -1,6 +1,6 @@
 package store
 
-import "store/internal/models"
+import "github.com/himmel520/notebook_store/store/internal/models"
 
 type Notebook interface {
 	CreateNotebook(n *models.Notebook) error

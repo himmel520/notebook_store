@@ -1,9 +1,19 @@
-<h2>notebook_store</h2>
+# notebook store
 
-<pre>cd authentication</pre>
-<pre>go run cmd/main.go</pre><br>
+Microservices architecture for a laptop store backend with authentication, roles (admin/client), and inter-service communication through NATS.
 
+## tools:
+- NATS 
+- PostgreSQL
+- Redis
 
-<pre>cd store</pre>
-<pre>go run cmd/main.go</pre>
+## setup:
+```shell
+cd authentication
+docker compose build
+docker compose up
 
+cd store
+docker compose build
+docker compose up
+```

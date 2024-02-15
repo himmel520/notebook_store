@@ -1,8 +1,8 @@
 package main
 
 import (
-	log "store/internal/logger"
-	"store/internal/server"
+	log "github.com/himmel520/notebook_store/store/internal/logger"
+	"github.com/himmel520/notebook_store/store/internal/server"
 
 	"github.com/BurntSushi/toml"
 )

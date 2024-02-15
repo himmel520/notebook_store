@@ -1,4 +1,4 @@
-module store
+module github.com/himmel520/notebook_store/store
 
 go 1.21.0
 

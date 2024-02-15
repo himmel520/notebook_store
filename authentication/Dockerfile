@@ -1,23 +1,18 @@
-FROM golang:latest
+FROM golang AS builder
 
-WORKDIR /app
-COPY . .
+WORKDIR /usr/local/src
 
+# Dependencies
+COPY go.mod ./ 
 RUN go mod download
-EXPOSE 8080
 
-CMD ["go", "run", "cmd/main.go"]
+# Build
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o ./bin/auth cmd/main.go
 
-# FROM golang AS builder
-# WORKDIR /build
+FROM alpine as runner
 
-# COPY . .
-# RUN go clean --modcache
-# RUN go build -mod=readonly -o auth ./cmd/main.go
+COPY --from=builder usr/local/src/bin/auth /
+COPY --from=builder usr/local/src/configs /configs
 
-# FROM alpine
-
-# COPY --from=builder /build/auth /build
-
-# CMD ["/build"]
-
+CMD ["/auth"]

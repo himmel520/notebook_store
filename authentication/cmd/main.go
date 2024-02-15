@@ -1,8 +1,8 @@
 package main
 
 import (
-	log "authentication/internal/logger"
-	"authentication/internal/server"
+	log "github.com/himmel520/notebook_store/authentication/internal/logger"
+	"github.com/himmel520/notebook_store/authentication/internal/server"
 
 	"github.com/BurntSushi/toml"
 )

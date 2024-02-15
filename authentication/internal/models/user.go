@@ -1,10 +1,11 @@
 package models
 
 import (
-	uerr "authentication/internal/errors"
 	"crypto/sha256"
 	"fmt"
 	"regexp"
+
+	uerr "github.com/himmel520/notebook_store/authentication/internal/errors"
 )
 
 const (

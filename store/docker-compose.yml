@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 services:
   store:
@@ -7,8 +7,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
+    restart: on-failure
+    depends_on:
+      - nats
+      - store-pg
     networks:
-    - notebook
+      - notebook
 
   nats:
     image: nats
@@ -17,33 +21,18 @@ services:
       - "4222:4222"
       - "8222:8222"
     networks:
-    - notebook
+      - notebook
 
   store-pg:
-    image: postgres
+    image: postgres:alpine3.19
     container_name: store-pg
     volumes:
-    - "./migrations/000001_notebook.up.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "./migrations/000001_notebook.up.sql:/docker-entrypoint-initdb.d/init.sql"
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: notebook
     ports:
       - "5432:5432"
-
-
-  nginx:
-    image: nginx
-    container_name: nginx
-    # ports:
-    #   - "8080:80"
-    networks:
-      - notebook
-
-  apache:
-    image: httpd
-    container_name: apache
-    # ports:
-    #   - "8081:80"
     networks:
       - notebook
 

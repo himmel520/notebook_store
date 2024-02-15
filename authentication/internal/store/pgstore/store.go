@@ -1,8 +1,9 @@
 package pgstore
 
 import (
-	"authentication/internal/store"
 	"database/sql"
+
+	"github.com/himmel520/notebook_store/authentication/internal/store"
 
 	_ "github.com/lib/pq"
 )

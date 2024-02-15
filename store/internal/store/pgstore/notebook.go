@@ -2,8 +2,9 @@ package pgstore
 
 import (
 	"database/sql"
-	log "store/internal/logger"
-	"store/internal/models"
+
+	log "github.com/himmel520/notebook_store/store/internal/logger"
+	"github.com/himmel520/notebook_store/store/internal/models"
 )
 
 type NotebookRepo struct {
